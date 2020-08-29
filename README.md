@@ -1,6 +1,13 @@
 # Hangman Ruby Playground
 
-WIP.
+## Creating the project
+
+After issuing `gem install rails`, at the root folder I did:
+
+    rails new . --skip-git --skip-action-mailer --skip-action-mailbox \
+    --skip-action-text --skip-active-storage --api
+
+I had to exclude `robots.txt`, as I'm developing an [API-only application](https://guides.rubyonrails.org/api_app.html).
 
 ## Interesting links
 
