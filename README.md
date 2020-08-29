@@ -5,9 +5,12 @@
 After issuing `gem install rails`, at the root folder I did:
 
     rails new . --skip-git --skip-action-mailer --skip-action-mailbox \
-    --skip-action-text --skip-active-storage --api
+    --skip-action-text --skip-active-storage --skip-test --api
 
-I had to exclude `robots.txt`, as I'm developing an [API-only application](https://guides.rubyonrails.org/api_app.html).
+Important things:
+
+- I had to exclude `public` folder and its content (in my case, only `robots.txt`), as I'm developing an [API-only application](https://guides.rubyonrails.org/api_app.html);
+- As you saw, I used `--skip-test` because I configured RSpec afterwards.
 
 ## Interesting links
 
@@ -20,6 +23,10 @@ Articles:
 
 - [My thoughts on Hanami](https://ryanbigg.com/2018/03/my-thoughts-on-hanami)
 - [Upgrading GitHub to Ruby 2.7](https://github.blog/2020-08-25-upgrading-github-to-ruby-2-7/)
+- [Build a RESTful JSON API With Rails 5 - Part One](https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-one)
+- [Build a RESTful JSON API With Rails 5 - Part Two](https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-two)
+- [Build a RESTful JSON API With Rails 5 - Part Three](https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-three)
+
 
 Presentations:
 
