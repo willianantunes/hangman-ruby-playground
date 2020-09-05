@@ -132,4 +132,5 @@ Documentations:
 
 - [Project: RSpec Rails 4.0 / Directory Structure](https://relishapp.com/rspec/rspec-rails/docs/directory-structure)
 - [Project: RSpec Expectations 3.9 / Built in matchers](https://relishapp.com/rspec/rspec-expectations/v/3-9/docs/built-in-matchers)
+- [The Definitive RSpec Tutorial With Examples](https://www.rubyguides.com/2018/07/rspec-tutorial/)
 - [Factory Bot Getting Started](https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md)
