@@ -39,24 +39,24 @@ Important things:
 
 ### Creating models and migrations
 
-If you worked with [Entity Framework](https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli) or [Django](https://docs.djangoproject.com/en/3.1/topics/migrations/) concerning this topic, here you'll see the same thing but with a different approach.  Like your model has no explicit attributes, only validations for example. You can only see its attributes analyzing [schema.rb](/db/schema.rb. So I understand a good way to work with it is first you generate you model, like the following:
+If you worked with [Entity Framework](https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli) or [Django](https://docs.djangoproject.com/en/3.1/topics/migrations/) concerning this topic, here you'll see the same thing but with a different approach. Like your model has no explicit attributes, only validations for example. You can only see its attributes analyzing [schema.rb](/db/schema.rb). So I understand a good way to work with it is first you generate you model, like the following:
 
     rails g model Player name:string email:string birthday:date gender:string
 
 This will generate the following files (I'm using `RSpec`):
 
-    db/migrate/20200905152907_create_players.rb
+    db/migrate/YYYYMMDDHHMMSS_create_players.rb
     app/models/player.rb
     spec/models/player_spec.rb
 
-You can edit the migration `20200905152907_create_players.rb` and leave like that:
+You can edit the migration `YYYYMMDDHHMMSS_create_players.rb` and leave like that:
 
 ```ruby
 class CreatePlayers < ActiveRecord::Migration[6.0]
   def change
     create_table :players do |t|
-      t.string :name, limit: 255
-      t.string :email, limit: 320
+      t.string :name, limit: 70, null: false
+      t.string :email, limit: 320, null: false
       t.date :birthday
       t.string :gender, limit: 1
 
@@ -67,6 +67,38 @@ end
 ```
 
 Then you can run `rails db:migrate` and it's all done.
+
+Important: You can't keep all the generating models process from the command line, that mean that you have to alter the migration file for some tasks like configure a column as not null, default value and some other configuration.
+
+
+Concerning my hangman modeling, I created executing the following commands:
+
+    rails g model Player name:string{70} email:string{320} birthday:date gender:string{1}
+    rails g model Game in_progress:boolean defined_word:string{45} attempts:integer perfect_victory:boolean number_of_tries:integer current_situation:string player:belongs_to
+    rails g model Guess chosen_letter:string{1} winner:boolean game:belongs_to
+    rails g model Hit word_position:integer guess:belongs_to
+
+I had to edit some files, for example I updated `YYYYMMDDHHMMSS_create_games.rb` in order to not allow the same player create a game with a previous word he used including some other constraints:
+
+```ruby
+class CreateGames < ActiveRecord::Migration[6.0]
+  def change
+    create_table :games do |t|
+      t.boolean :in_progress, default: true, null: false
+      t.string :defined_word, limit: 45, null: false
+      t.integer :attempts, null: false
+      t.boolean :perfect_victory
+      t.integer :number_of_tries, default: 0
+      t.string :current_situation, null: false
+      t.belongs_to :player, null: false, foreign_key: true
+
+      t.timestamps
+    end
+
+    add_index(:games, [:defined_word, :player_id], unique: true)
+  end
+end
+```
 
 ## Interesting links
 
