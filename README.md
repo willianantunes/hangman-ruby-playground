@@ -10,7 +10,7 @@ At the root folder, execute the following:
     
 Having `rails` globally installed, now you can do:
 
-    rails server
+    rails db:migrate && rails server
 
 With `HTTPie` (or `curl`) you can play with it:
 
