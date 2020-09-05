@@ -39,7 +39,7 @@ Important things:
 
 ### Creating models and migrations
 
-If you worked with [Entity Framework](https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli) or [Django](https://docs.djangoproject.com/en/3.1/topics/migrations/) concerning this topic, here you'll see the same thing but with a different approach.  Like you model has no attribute, only validations for example. You can only see its attributes analyzing [schema.rb](/db/schema.rb. So I understand a good way to work with it is first you generate you model, like the following:
+If you worked with [Entity Framework](https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli) or [Django](https://docs.djangoproject.com/en/3.1/topics/migrations/) concerning this topic, here you'll see the same thing but with a different approach.  Like your model has no explicit attributes, only validations for example. You can only see its attributes analyzing [schema.rb](/db/schema.rb. So I understand a good way to work with it is first you generate you model, like the following:
 
     rails g model Player name:string email:string birthday:date gender:string
 
