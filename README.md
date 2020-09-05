@@ -23,7 +23,9 @@ In order to run tests:
 
     bundle exec rspec
 
-## Creating the project
+## What I learned so far
+
+### Creating the project
 
 After issuing `gem install rails`, at the root folder I did:
 
@@ -34,6 +36,37 @@ Important things:
 
 - I had to exclude `public` folder and its content (in my case, only `robots.txt`), as I'm developing an [API-only application](https://guides.rubyonrails.org/api_app.html);
 - As you saw, I used `--skip-test` because I configured RSpec afterwards.
+
+### Creating models and migrations
+
+If you worked with [Entity Framework](https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli) or [Django](https://docs.djangoproject.com/en/3.1/topics/migrations/) concerning this topic, here you'll see the same thing but with a different approach.  Like you model has no attribute, only validations for example. You can only see its attributes analyzing [schema.rb](/db/schema.rb. So I understand a good way to work with it is first you generate you model, like the following:
+
+    rails g model Player name:string email:string birthday:date gender:string
+
+This will generate the following files (I'm using `RSpec`):
+
+    db/migrate/20200905152907_create_players.rb
+    app/models/player.rb
+    spec/models/player_spec.rb
+
+You can edit the migration `20200905152907_create_players.rb` and leave like that:
+
+```ruby
+class CreatePlayers < ActiveRecord::Migration[6.0]
+  def change
+    create_table :players do |t|
+      t.string :name, limit: 255
+      t.string :email, limit: 320
+      t.date :birthday
+      t.string :gender, limit: 1
+
+      t.timestamps
+    end
+  end
+end
+```
+
+Then you can run `rails db:migrate` and it's all done.
 
 ## Interesting links
 
