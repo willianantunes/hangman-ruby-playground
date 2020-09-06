@@ -7,9 +7,9 @@ RSpec.describe 'Items API', type: :request do
   let(:todo_id) { todo.id }
   let(:id) { items.first.id }
 
-  # Test suite for GET /todos/:todo_id/items
-  describe 'GET /todos/:todo_id/items' do
-    before { get "/todos/#{todo_id}/items" }
+  # Test suite for GET /api/v1/todos/:todo_id/items
+  describe 'GET /api/v1/todos/:todo_id/items' do
+    before { get "/api/v1/todos/#{todo_id}/items" }
 
     context 'when todo exists' do
       it 'returns status code 200' do
@@ -35,9 +35,9 @@ RSpec.describe 'Items API', type: :request do
     end
   end
 
-  # Test suite for GET /todos/:todo_id/items/:id
-  describe 'GET /todos/:todo_id/items/:id' do
-    before { get "/todos/#{todo_id}/items/#{id}" }
+  # Test suite for GET /api/v1/todos/:todo_id/items/:id
+  describe 'GET /api/v1/todos/:todo_id/items/:id' do
+    before { get "/api/v1/todos/#{todo_id}/items/#{id}" }
 
     context 'when todo item exists' do
       it 'returns status code 200' do
@@ -63,12 +63,12 @@ RSpec.describe 'Items API', type: :request do
     end
   end
 
-  # Test suite for PUT /todos/:todo_id/items
-  describe 'POST /todos/:todo_id/items' do
+  # Test suite for PUT /api/v1/todos/:todo_id/items
+  describe 'POST /api/v1/todos/:todo_id/items' do
     let(:valid_attributes) { {name: 'Visit Narnia', done: false} }
 
     context 'when request attributes are valid' do
-      before { post "/todos/#{todo_id}/items", params: valid_attributes }
+      before { post "/api/v1/todos/#{todo_id}/items", params: valid_attributes }
 
       it 'returns status code 201' do
         expect(response).to have_http_status(201)
@@ -76,7 +76,7 @@ RSpec.describe 'Items API', type: :request do
     end
 
     context 'when an invalid request' do
-      before { post "/todos/#{todo_id}/items", params: {} }
+      before { post "/api/v1/todos/#{todo_id}/items", params: {} }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -88,11 +88,11 @@ RSpec.describe 'Items API', type: :request do
     end
   end
 
-  # Test suite for PUT /todos/:todo_id/items/:id
-  describe 'PUT /todos/:todo_id/items/:id' do
+  # Test suite for PUT /api/v1/todos/:todo_id/items/:id
+  describe 'PUT /api/v1/todos/:todo_id/items/:id' do
     let(:valid_attributes) { {name: 'Mozart'} }
 
-    before { put "/todos/#{todo_id}/items/#{id}", params: valid_attributes }
+    before { put "/api/v1/todos/#{todo_id}/items/#{id}", params: valid_attributes }
 
     context 'when item exists' do
       it 'returns status code 204' do
@@ -118,9 +118,9 @@ RSpec.describe 'Items API', type: :request do
     end
   end
 
-  # Test suite for DELETE /todos/:id
-  describe 'DELETE /todos/:id' do
-    before { delete "/todos/#{todo_id}/items/#{id}" }
+  # Test suite for DELETE /api/v1/todos/:id
+  describe 'DELETE /api/v1/todos/:id' do
+    before { delete "/api/v1/todos/#{todo_id}/items/#{id}" }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
