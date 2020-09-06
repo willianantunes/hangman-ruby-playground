@@ -14,10 +14,10 @@ Having `rails` globally installed, now you can do:
 
 With `HTTPie` (or `curl`) you can play with it:
 
-    http :3000/todos
-    http POST :3000/todos title=Mozart created_by=1
-    http PUT :3000/todos/1 title=Beethoven
-    http DELETE :3000/todos/1
+    http :3000/api/v1/todos
+    http POST :3000/api/v1/todos title=Mozart created_by=1
+    http PUT :3000/api/v1/todos/1 title=Beethoven
+    http DELETE :3000/api/v1/todos/1
 
 In order to run tests:
 
