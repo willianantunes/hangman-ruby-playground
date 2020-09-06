@@ -21,4 +21,9 @@ Rails.application.routes.draw do
   #            PATCH  /todos/:id(.:format)                todos#update
   #            PUT    /todos/:id(.:format)                todos#update
   #            DELETE /todos/:id(.:format)                todos#destroy
+  namespace :api do
+    namespace :v1 do
+      post 'cockatiel', to: 'games#something'
+    end
+  end
 end
