@@ -1,5 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Guess, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should belong_to(:game) }
+  it { should have_many(:hits) }
 end
