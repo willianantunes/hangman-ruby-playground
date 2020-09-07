@@ -114,7 +114,9 @@ Articles:
 - [Build a RESTful JSON API With Rails 5 - Part One](https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-one)
 - [Build a RESTful JSON API With Rails 5 - Part Two](https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-two)
 - [Build a RESTful JSON API With Rails 5 - Part Three](https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-three)
-- [Rails Params: Where do they come from?](https://medium.com/launch-school/params-in-rails-where-do-they-come-from-b172cdb46eb4)
+- [Ruby on Rails Developer Series: Spinning Up a JSON API in Minutes](https://rollout.io/blog/ror-developer-series-spinning-up-a-json-api-in-minutes/)
+- [Rails: /app vs /lib](https://devblast.com/b/rails-app-vs-lib)
+- [What goes in Rails lib/](https://medium.com/extreme-programming/what-goes-in-rails-lib-92c74dfd955e)
 
 Presentations:
 

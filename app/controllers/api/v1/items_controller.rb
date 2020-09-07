@@ -1,4 +1,4 @@
-module Api
+module API
   module V1
     class ItemsController < ApplicationController
       before_action :set_todo
