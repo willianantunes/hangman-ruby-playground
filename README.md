@@ -117,6 +117,7 @@ Articles:
 - [Ruby on Rails Developer Series: Spinning Up a JSON API in Minutes](https://rollout.io/blog/ror-developer-series-spinning-up-a-json-api-in-minutes/)
 - [Rails: /app vs /lib](https://devblast.com/b/rails-app-vs-lib)
 - [What goes in Rails lib/](https://medium.com/extreme-programming/what-goes-in-rails-lib-92c74dfd955e)
+- [How to Use Scopes in Ruby on Rails](https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/)
 
 Presentations:
 
