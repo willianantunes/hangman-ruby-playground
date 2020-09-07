@@ -1,0 +1,12 @@
+version: "2.4"
+services:
+  word-suggestion:
+    image: ruby:2.7-alpine
+    environment:
+      - DELAY_ANSWER_IN_SECONDS=1
+      - PORT=8085
+    ports:
+      - "8000:8085"
+    volumes:
+      - "./spec/resources/lag_ruby_server.rb:/app/lag_ruby_server.rb"
+    command: [ "ruby", "/app/lag_ruby_server.rb" ]
