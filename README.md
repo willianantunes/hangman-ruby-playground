@@ -2,6 +2,10 @@
 
 First of all I'm playing with Rails to discover how it works with random approaches. When I reach the point where I can do things as I desire, this will provide me everything I need to create the Hangman Man through an API! Keep looking on it! :smiley:
 
+I did a side project to help accomplish when one the business rules I invented for this game! See more details on Excalidraw opening the file [drafts.excalidraw](docs/drafts.excalidraw):
+
+- Project with [Sinatra](https://github.com/sinatra/sinatra) called [Runner #SaidNoOneEver](https://github.com/willianantunes/runner-said-no-one-ever/).
+
 ## Running the project
 
 At the root folder, execute the following:

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module API
   module V1
     class ItemsController < ApplicationController
       before_action :set_todo
-      before_action :set_todo_item, only: [:show, :update, :destroy]
+      before_action :set_todo_item, only: %i[show update destroy]
 
       def index
         render json: @todo.items, status: :ok
