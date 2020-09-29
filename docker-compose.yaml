@@ -1,13 +1,18 @@
 version: "2.4"
 services:
   word-suggestion:
-    build:
-      context: spec/resources
+    image: willianantunes/runner-said-no-one-ever
     environment:
-      - DELAY_ANSWER_IN_SECONDS=1
-      - PORT=8085
+      - PUMA_BIND_ADDRESS=0.0.0.0
+      - PUMA_BIND_PORT=8080
+      - PUMA_MIN_THREADS=4
+      - PUMA_MAX_THREADS=20
+      - PUMA_NUMBER_OF_WORKERS=0
+      - PUMA_PERSISTENT_TIMEOUT=20
+      - PUMA_FIRST_DATA_TIMEOUT=30
+      - RACK_ENV=development
+      - APP_ENV=development
+      - PROJECT_LOG_LEVEL=DEBUG
+      - RACK_IP_ADDRESS_HEADER=REMOTE_ADDR
     ports:
-      - "8000:8085"
-    volumes:
-      - "./spec/resources/lag_ruby_server.rb:/app/lag_ruby_server.rb"
-    command: [ "ruby", "lag_ruby_server.rb" ]
+      - "8081:8080"
