@@ -1,5 +1,14 @@
 version: "2.4"
 services:
+  remote-interpreter:
+    build:
+      context: .
+      dockerfile: DockerfileForDev
+    env_file: .env.development
+    ports:
+      - "8000:3000"
+    volumes:
+      - .:/app
   word-suggestion:
     image: willianantunes/runner-said-no-one-ever
     environment:

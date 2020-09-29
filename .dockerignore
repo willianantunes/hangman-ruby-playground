@@ -1,0 +1,14 @@
+# https://docs.docker.com/engine/reference/builder/#dockerignore-file
+# Block everything
+*
+# Allowed files and directories
+!app
+!bin
+!config
+!db
+!lib
+!config.ru
+!Gemfile
+!Gemfile.lock
+!tmp/.keep
+!tmp/pids/.keep
