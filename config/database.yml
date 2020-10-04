@@ -25,10 +25,10 @@ default: &default
   pool: <%= Settings::RAILS_MAX_THREADS %>
   username: <%= Settings::DB_USER %>
   password: <%= Settings::DB_PASSWORD %>
+  database: <%= Settings::DB_DATABASE_NAME %>
 
 development:
   <<: *default
-  database: <%= Settings::DB_DATABASE_NAME %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -62,7 +62,6 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: hangman_ruby_playground_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -84,4 +83,3 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 production:
   <<: *default
-  database: <%= Settings::DB_DATABASE_NAME %>

@@ -8,7 +8,11 @@ I did a side project to help accomplish when one the business rules I invented f
 
 ## Running the project
 
-At the root folder, execute the following:
+With Docker just issue the following:
+
+    docker-compose up app
+
+Or at the root folder, given you loaded `.env.development` into your current environment, execute the following:
 
     bundler install
     
@@ -16,7 +20,7 @@ Having `rails` globally installed, now you can do:
 
     rails db:migrate && rails server
 
-With `HTTPie` (or `curl`) you can play with it:
+With `HTTPie` (or `curl`) you can play with it (use port `8000` if Docker is in place):
 
     http :3000/api/v1/todos
     http POST :3000/api/v1/todos title=Mozart created_by=1
@@ -24,6 +28,10 @@ With `HTTPie` (or `curl`) you can play with it:
     http DELETE :3000/api/v1/todos/1
 
 In order to run tests:
+
+    docker-compose up tests
+
+Or the following:
 
     bundle exec rspec
 

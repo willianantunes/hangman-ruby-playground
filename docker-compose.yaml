@@ -14,7 +14,18 @@ services:
       - db
     volumes:
       - .:/app
-    command: tail -f /dev/null
+  app:
+    build:
+      context: .
+      dockerfile: DockerfileForDev
+    env_file: .env.development
+    ports:
+      - "8000:3000"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    command: ./scripts/start-development.sh
   db:
     image: postgres:13.0-alpine
     environment:
