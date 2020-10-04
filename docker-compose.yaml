@@ -14,7 +14,7 @@ services:
       - db
     volumes:
       - .:/app
-    command: tailf -f /dev/null
+    command: tail -f /dev/null
   db:
     image: postgres:13.0-alpine
     environment:
