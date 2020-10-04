@@ -38,3 +38,15 @@ services:
       - RACK_IP_ADDRESS_HEADER=REMOTE_ADDR
     ports:
       - "8081:8080"
+  tests:
+    build:
+      context: .
+      dockerfile: DockerfileForDev
+    working_dir: /app
+    env_file: .env.test
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    command: >
+      sh -c "bundle install && bundler exec rake spec"

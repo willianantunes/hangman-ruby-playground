@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Player, type: :model do
-  context "Physical database validation" do
+  context 'Physical database validation' do
     it 'Should raise constraint error given no name is filled' do
-      my_problematic_error = Player.new(name: "Cockatiel")
+      my_problematic_error = Player.new(name: 'Cockatiel')
 
-      expect { my_problematic_error.save :validate => false }.to(raise_error { |error|
+      expect { my_problematic_error.save validate: false }.to(raise_error do |error|
         expect(error).to be_a(ActiveRecord::NotNullViolation)
-        expect(error.to_s).to(include("players.email"))
-      })
+        expect(error.to_s).to(include('email'))
+      end)
     end
   end
 
-  context "Model validation" do
+  context 'Model validation' do
     it 'Should raise constraint error given no name is filled' do
-      my_problematic_error = Player.new(name: "Cockatiel")
+      my_problematic_error = Player.new(name: 'Cockatiel')
 
       result = my_problematic_error.save
 

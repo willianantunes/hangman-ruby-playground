@@ -25,6 +25,8 @@ require 'rspec/rails'
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin
+  # https://stackoverflow.com/questions/29856922/active-record-error-to-create-database
+  system "rake db:create"
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
