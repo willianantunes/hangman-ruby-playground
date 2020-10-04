@@ -104,12 +104,43 @@ class CreateGames < ActiveRecord::Migration[6.0]
 end
 ```
 
+### Changing from SQLite to PostgreSQL
+
+Just issue the command below:
+
+    rails db:system:change --to=postgresql
+
+And the following files will be updated:
+
+    config/database.yml
+    Gemfile
+
+To install `pg` gem, I had to do the following:
+
+    https://stackoverflow.com/a/20482221/3899136
+
+```text
+libpq is keg-only, which means it was not symlinked into /usr/local,
+because conflicts with postgres formula.
+
+If you need to have libpq first in your PATH run:
+  echo 'export PATH="/usr/local/opt/libpq/bin:$PATH"' >> /Users/willianantunes/.bash_profile
+
+For compilers to find libpq you may need to set:
+  export LDFLAGS="-L/usr/local/opt/libpq/lib"
+  export CPPFLAGS="-I/usr/local/opt/libpq/include"
+
+For pkg-config to find libpq you may need to set:
+  export PKG_CONFIG_PATH="/usr/local/opt/libpq/lib/pkgconfig"
+```
+
 ## Interesting links
 
 Nice projects to look over:
 
 - [rootstrap/rails_api_base](https://github.com/rootstrap/rails_api_base)
 - [radar/twist-v2](https://github.com/radar/twist-v2)
+- [downgba/rack-healthcheck](https://github.com/downgba/rack-healthcheck)
 
 Articles:
 
@@ -122,6 +153,8 @@ Articles:
 - [Rails: /app vs /lib](https://devblast.com/b/rails-app-vs-lib)
 - [What goes in Rails lib/](https://medium.com/extreme-programming/what-goes-in-rails-lib-92c74dfd955e)
 - [How to Use Scopes in Ruby on Rails](https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/)
+- [The smart way to check health of a Rails app](https://blog.arkency.com/2016/02/the-smart-way-to-check-health-of-a-rails-app/)
+- [How to have a working ‘/health’ endpoint while Rails is 500ring](https://medium.com/@goncalvesjoao/how-to-have-a-working-health-endpoint-while-rails-is-500ring-509efc1da42c)
 
 Presentations:
 
@@ -141,3 +174,7 @@ Documentations:
 - [Project: RSpec Expectations 3.9 / Built in matchers](https://relishapp.com/rspec/rspec-expectations/v/3-9/docs/built-in-matchers)
 - [The Definitive RSpec Tutorial With Examples](https://www.rubyguides.com/2018/07/rspec-tutorial/)
 - [Factory Bot Getting Started](https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md)
+
+Videos:
+
+- [RubyMine & Docker Compose](https://youtu.be/BHniRaZ0_JE)

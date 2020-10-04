@@ -6,9 +6,22 @@ services:
       dockerfile: DockerfileForDev
     env_file: .env.development
     ports:
-      - "8000:3000"
+      - "8080:3000"
+      # Ports required for debugging
+      - "1234:1234"
+      - "26166:26168"
+    depends_on:
+      - db
     volumes:
       - .:/app
+    command: tailf -f /dev/null
+  db:
+    image: postgres:13.0-alpine
+    environment:
+      POSTGRES_USER: postgres_app_user
+      POSTGRES_PASSWORD: postgres_password_app_user
+    ports:
+      - 5432:5432
   word-suggestion:
     image: willianantunes/runner-said-no-one-ever
     environment:
