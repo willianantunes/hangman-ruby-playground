@@ -26,6 +26,8 @@ With `HTTPie` (or `curl`) you can play with it (use port `8000` if Docker is in 
     http POST :3000/api/v1/todos title=Mozart created_by=1
     http PUT :3000/api/v1/todos/1 title=Beethoven
     http DELETE :3000/api/v1/todos/1
+    http POST :8000/api/v1/players name=Jafar email=jafar@agrabah.com
+    http GET :8000/api/v1/players
 
 In order to run tests:
 
@@ -150,6 +152,12 @@ In order to get a full CRUD controller, sample command I used:
 
 Natively it lacks pagination support. 
 
+### Updating your Gemfile.lock through Docker
+
+As I'm using remote interpreter, I'll do everything over it. As a means to accomplish what I mention you can do:
+
+    docker-compose run --rm remote-interpreter bundle install
+
 ## Interesting links
 
 Nice projects to look over:
@@ -195,3 +203,7 @@ Documentations:
 Videos:
 
 - [RubyMine & Docker Compose](https://youtu.be/BHniRaZ0_JE)
+
+Issues:
+
+- [Docker Compose service as remote interpreter can't install debugger gems (debase)](https://intellij-support.jetbrains.com/hc/en-us/community/posts/360009798720-Docker-Compose-service-as-remote-interpreter-can-t-install-debugger-gems-debase-)

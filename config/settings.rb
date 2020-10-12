@@ -3,6 +3,7 @@
 class Settings
   include Support::Utils
 
+  ############ INFRA ENVS
   PORT = Integer(get_env_or_raise_exception('PORT'))
   RAILS_MIN_THREADS = Integer(get_env_or_raise_exception('RAILS_MIN_THREADS'))
   RAILS_MAX_THREADS = Integer(get_env_or_raise_exception('RAILS_MAX_THREADS'))
@@ -15,4 +16,8 @@ class Settings
   DB_PASSWORD = get_env_or_raise_exception('DB_PASSWORD')
   DB_HOST = get_env_or_raise_exception('DB_HOST')
   DB_PORT = get_env_or_raise_exception('DB_PORT')
+
+  ############ APPLICATION BUSINESS ENVS
+  RUNNER_ENDPOINT = get_env_or_raise_exception('RUNNER_ENDPOINT')
+  RUNNER_REQUEST_PATH_V1_MOVIES = get_env_or_raise_exception('RUNNER_REQUEST_PATH_V1_MOVIES')
 end

@@ -7,11 +7,9 @@ services:
     env_file: .env.development
     ports:
       - "8080:3000"
-      # Ports required for debugging
-      - "1234:1234"
-      - "26166:26168"
     depends_on:
       - db
+      - word-suggestion
     volumes:
       - .:/app
   app:
@@ -23,9 +21,23 @@ services:
       - "8000:3000"
     depends_on:
       - db
+      - word-suggestion
     volumes:
       - .:/app
-    command: ./scripts/start-development.sh
+    command:
+      [
+          "./scripts/wait-for-it.sh",
+          "db:5432",
+          "-t",
+          "120",
+          "--",
+          "./scripts/wait-for-it.sh",
+          "word-suggestion:8080",
+          "-t",
+          "120",
+          "--",
+          "./scripts/start-development.sh",
+      ]
   db:
     image: postgres:13.0-alpine
     environment:
@@ -59,5 +71,18 @@ services:
       - .:/app
     depends_on:
       - db
-    command: >
-      sh -c "bundle install && bundler exec rake spec"
+      - word-suggestion
+    command:
+      [
+          "./scripts/wait-for-it.sh",
+          "db:5432",
+          "-t",
+          "120",
+          "--",
+          "./scripts/wait-for-it.sh",
+          "word-suggestion:8080",
+          "-t",
+          "120",
+          "--",
+          "./scripts/start-tests.sh",
+      ]

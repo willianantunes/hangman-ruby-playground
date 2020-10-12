@@ -1,17 +1,11 @@
 FROM timbru31/ruby-node:2.7
 
-RUN groupadd --system app-user && adduser --system --ingroup app-user app-user
-
 WORKDIR /app
-
-RUN chown app-user:app-user /app
 
 COPY Gemfile Gemfile.lock ./
 
 RUN bundle install
 
-USER app-user
-
-COPY --chown=app-user:app-user . ./
+COPY . ./
 
 CMD tail -f /dev/null
