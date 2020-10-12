@@ -16,5 +16,10 @@ Layout/LineLength:
   Max: 120
 Metrics/MethodLength:
   Max: 16
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
 Documentation:
   Enabled: false
