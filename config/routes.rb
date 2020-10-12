@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :todos do
         resources :items
       end
+      resources :players
       post 'cockatiel', to: 'games#something'
     end
   end

@@ -142,6 +142,14 @@ For pkg-config to find libpq you may need to set:
   export PKG_CONFIG_PATH="/usr/local/opt/libpq/lib/pkgconfig"
 ```
 
+### Scaffolding controllers
+
+In order to get a full CRUD controller, sample command I used:
+
+    rails generate scaffold_controller player name:string{70} email:string{320} birthday:date gender:string  --api --skip
+
+Natively it lacks pagination support. 
+
 ## Interesting links
 
 Nice projects to look over:
